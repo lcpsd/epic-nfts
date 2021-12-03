@@ -1,14 +1,22 @@
+
 async function main(){
     // Get Contract File
-    const contract = await hre.ethers.getContractFactory('EpicNFT');
+    const contractFactory = await hre.ethers.getContractFactory('EpicNFT');
     // Deploy contract on local network
-    const contractDeploy = await contract.deploy();
+    const contract = await contractFactory.deploy();
 
     // Wait deploy finish
-    await contractDeploy.deployed();
+    await contract.deployed();
 
     // Show deploy address
-    console.log("Deployed: ", contractDeploy.address)
+    console.log("Deployed: ", contract.address)
+
+    // Test NFT Minting
+    // call NFT Minter function
+    let txn = await contract.makeNFT()
+
+    // Wait finish
+    await txn.wait()
 }
 
 try{
