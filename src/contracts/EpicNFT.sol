@@ -18,8 +18,8 @@ contract EpicNFT is ERC721URIStorage {
 
     // Random Words
    string[] firstWords = ["Macarrao", "Pizza", "Feijoada", "Escondidinho", "IscaDeTilapia", "BatataFrita", "CachorroQuente"];
-   string[] secondWords = ["Short", "Blusa", "Saia", "Sapato", "Vestido", "Calcinha", "Cueca", "Capa"];
-   string[] thirdWords = ["Andando", "Cagando", "Comendo", "Correndo", "Viajando", "Dormindo", "Suando", "Domindo"];
+   string[] secondWords = ["DeShort", "DeBlusa", "DeSaia", "DeSapato", "DeVestido", "DeCalcinha", "DeCueca", "DeCapa"];
+   string[] thirdWords = ["Andando", "Mexendo", "Comendo", "Correndo", "Viajando", "Dormindo", "Suando", "Roncando"];
 
   constructor() ERC721 ("SquareNFT", "SQUARE") {
     console.log("Contract OK");
@@ -27,9 +27,11 @@ contract EpicNFT is ERC721URIStorage {
 
   // Pick Random Word
   function pickRandomFirstWord(uint256 tokenId) public view returns (string memory) {
-    // I seed the random generator. More on this in the lesson. 
+
+    // Random seed
     uint256 rand = random(string(abi.encodePacked("FIRST_WORD", Strings.toString(tokenId))));
-    // Squash the # between 0 and the length of the array to avoid going out of bounds.
+
+    // Pick random  word
     rand = rand % firstWords.length;
     return firstWords[rand];
   }
