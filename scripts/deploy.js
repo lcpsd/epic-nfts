@@ -18,10 +18,8 @@ async function main(){
 
     // Wait finish
     await txn.wait()
+
+    console.log('Finished')
 }
 
-try{
-    main()
-}catch(error){
-    console.log(error);
-}
+main()
